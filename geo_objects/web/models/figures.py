@@ -7,7 +7,6 @@ from .tags import Tag
 
 class Figures (BaseModel):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-
     name = models.CharField(verbose_name="Name", max_length=64)
     elevation = models.PositiveBigIntegerField(verbose_name="Elevation")
     altitude = models.PositiveBigIntegerField(verbose_name="Altitude")
