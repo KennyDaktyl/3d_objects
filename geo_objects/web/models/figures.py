@@ -3,6 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 from .base import BaseModel
 from .categories import Category
+from .tags import Tag
 
 class Figures (BaseModel):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
@@ -12,10 +13,11 @@ class Figures (BaseModel):
     altitude = models.PositiveBigIntegerField(verbose_name="Altitude")
     object_type = models.SmallIntegerField(verbose_name="Object type")
     lon = models.FloatField(verbose_name="Longitude", 
-        validators=[MinValueValidator(0.0), MaxValueValidator(180.0)])
+        validators=[MinValueValidator(-180.0), MaxValueValidator(180.0)])
     lat = models.FloatField(verbose_name="Latitude",
-        validators=[MinValueValidator(0.0), MaxValueValidator(180.0)]
+        validators=[MinValueValidator(-180.0), MaxValueValidator(180.0)]
     )
+    tags = models.ManyToManyField('Tag', blank=True)
 
     class Meta:
         ordering = (
