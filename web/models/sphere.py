@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+from django.template.defaultfilters import slugify
+
 from .base import BaseModel
 from .category import Category
 from .tag import Tag
@@ -20,12 +22,18 @@ class Sphere (BaseModel):
     has_audio = models.BooleanField(default=False)
     tags = models.ManyToManyField('Tag', blank=True)
 
+    slug  = models.SlugField(verbose_name="slug", max_length=128, blank=True, null=True)
+
     class Meta:
         ordering = (
             "created_time",
         )
         verbose_name_plural = "Sphere"
         db_table = "Sphere"
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Sphere, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.name

@@ -42,7 +42,7 @@ class CategoryViewSet(APIView):
     @swagger_auto_schema(
         operation_id='category_create',
         tags=['category'],
-        request_body=CategorySerializer,
+        request_body=CategoryPostSerializer,
         responses={'200': CategorySerializer}
     )
 
@@ -84,7 +84,7 @@ class CategoryViewDetails(APIView):
     @swagger_auto_schema(
         operation_id='category_update_view',
         tags=['category'],
-        request_body=CategorySerializer,
+        request_body=CategoryPostSerializer,
         responses={'200': CategorySerializer}
     )
 

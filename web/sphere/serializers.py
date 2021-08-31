@@ -8,7 +8,7 @@ class SphereSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Sphere
-        fields = ['id', 'name', 'category', 'object_type', 'radius', 'lon', 'lat', 'elevation', 'altitude', 'tags',]
+        fields = ['id', 'name', 'category', 'object_type', 'radius', 'lon', 'lat', 'elevation', 'altitude', 'tags', 'slug']
 
 class SpherePostSerializer(serializers.ModelSerializer):
 

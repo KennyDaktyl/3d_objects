@@ -10,7 +10,7 @@ class SouffleSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Souffle
-        fields = ['id', 'name', 'category', 'width', 'height', 'lon', 'lat', 'elevation', 'altitude', 'tags']
+        fields = ['id', 'name', 'category', 'width', 'height', 'lon', 'lat', 'elevation', 'altitude', 'tags', 'slug']
 
         read_only_fields = ['id', 'tags']
 
