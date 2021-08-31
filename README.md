@@ -1,13 +1,15 @@
 # 3d_objects
 
 Django Project
-Python
+Python 3.9.5
+Django 3.2.6
 
-install env:
+
+Install env:
 python3 -m venv env
 
-activate env
+Activate env
 source env/bin/activate
 
-install requirements:
+Install requirements:
 pip install -r requirements.txt
