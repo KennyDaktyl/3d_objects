@@ -12,21 +12,31 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import socket
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if socket.gethostname() in ["Asus", "michalp"]:
+    SECURE_SSL_REDIRECT = False
+    DEBUG = True
+    SECURE_SSL_REDIRECT = False
+    ALLOWED_HOSTS = ['*',]
+else:
+    DOMAIN = "souffle.resto-app.pl"
+    DEBUG = False
+    SECURE_SSL_REDIRECT = False
+    SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+    SESSION_COOKIE_DOMAIN = f".{DOMAIN}"
+    SESSION_COOKIE_HTTPONLY = True
+    # SESSION_COOKIE_AGE = 10 * 60
+    # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+    # SESSION_SAVE_EVERY_REQUEST = True
 
-ALLOWED_HOSTS = ['*',]
+    CSRF_COOKIE_DOMAIN = f".{DOMAIN}"
+    CSRF_COOKIE_HTTPONLY = True
+    ALLOWED_HOSTS = ['51.75.64.242',]
 
 
 # Application definition
