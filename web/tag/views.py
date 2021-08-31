@@ -40,7 +40,7 @@ class TagViewSet(APIView):
     @swagger_auto_schema(
         operation_id='tag_create',
         tags=['tag'],
-        request_body=TagSerializer,
+        request_body=TagPostSerializer,
         responses={'200': TagSerializer}
     )
 
@@ -82,6 +82,7 @@ class TagViewDetails(APIView):
     @swagger_auto_schema(
         operation_id='tag_details_update',
         tags=['tag'],
+        request_body=TagPostSerializer,
         responses={'200': TagSerializer}
     )
 
@@ -100,7 +101,7 @@ class TagViewDetails(APIView):
     @swagger_auto_schema(
         operation_id='tag_details_delete',
         tags=['tag'],
-        request_body=TagSerializer,
+        
         responses={'200': TagSerializer}
     )
 

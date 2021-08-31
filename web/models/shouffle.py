@@ -6,7 +6,7 @@ from .category import Category
 from .tag import Tag
 
 class Souffle (BaseModel):
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(verbose_name="Name", max_length=64)
     elevation = models.PositiveBigIntegerField(verbose_name="Elevation")
     altitude = models.PositiveBigIntegerField(verbose_name="Altitude")

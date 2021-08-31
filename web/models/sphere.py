@@ -6,11 +6,11 @@ from .category import Category
 from .tag import Tag
 
 class Sphere (BaseModel):
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(verbose_name="Name", max_length=64)
     elevation = models.PositiveBigIntegerField(verbose_name="Elevation")
     altitude = models.PositiveBigIntegerField(verbose_name="Altitude")
-    object_type = models.SmallIntegerField(verbose_name="Object type")
+    object_type = models.SmallIntegerField(verbose_name="Object type", blank=True, null=True)
     radius = models.FloatField(verbose_name="Radius", validators=[MinValueValidator(0.0)])
     lon = models.FloatField(verbose_name="Longitude", 
         validators=[MinValueValidator(-180.0), MaxValueValidator(180.0)])

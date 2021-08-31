@@ -19,6 +19,7 @@ class SoufflePostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Souffle
-        fields = ['id', 'name', 'category', 'width', 'height', 'lon', 'lat', 'elevation', 'altitude', 'tags']
+        fields = ['name', 'category', 'width', 'height', 'lon', 'lat', 'elevation', 'altitude', 'tags']
+        optional_fields = ['category', 'tags', ]
 
 

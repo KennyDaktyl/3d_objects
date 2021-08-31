@@ -40,6 +40,7 @@ class SouffleViewSet(APIView):
         tags = self.request.query_params.get('search')
         param_list = []
         if tags:
+            print(tags)
             for el in tags.split('|'):
                 param_list.append(str(el))
             souffles = souffles.filter(tags__slug__in=param_list).distinct()
@@ -113,9 +114,9 @@ class SouffleViewDetails(APIView):
         responses={'200': SouffleSerializer}
     )
        
-    def delete(self, request, souffle, *args, **kwargs):
+    def delete(self, request, souffle_id, *args, **kwargs):
         try:
-            souffle = Souffle.objects.get(pk=souffle)
+            souffle = Souffle.objects.get(pk=souffle_id)
         except Souffle.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         souffle.delete()
