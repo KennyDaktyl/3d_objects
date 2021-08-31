@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Figures, Tag
+from .models import Category, Sphere, Souffle, Tag
 
 # Register your models here.
 
@@ -9,18 +9,32 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('name', )
     exclude = ['id']
 
-@admin.register(Figures)
-class FiguresAdmin(admin.ModelAdmin):
-    list_display = [f.name for f in Figures._meta.fields]
+@admin.register(Sphere)
+class SphereAdmin(admin.ModelAdmin):
+    list_display = [f.name for f in Sphere._meta.fields]
     list_filter = (
         'category__name',
         'object_type',
+        'has_audio',
         'tags',
         
     )
     search_fields = ('name', )
     exclude = ['id']
     ordering = ['name']
+
+@admin.register(Souffle)
+class SouffleAdmin(admin.ModelAdmin):
+    list_display = [f.name for f in Souffle._meta.fields]
+    list_filter = (
+        'category__name',
+        'tags',
+        
+    )
+    search_fields = ('name', )
+    exclude = ['id']
+    ordering = ['name']
+
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):

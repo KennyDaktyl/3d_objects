@@ -5,8 +5,8 @@ from django.template.defaultfilters import slugify
 
 
 class Tag(BaseModel):
-    name = models.CharField(max_length=64)
-    slug  = models.SlugField(max_length=128, blank=True, null=True)
+    name = models.CharField(verbose_name="name", max_length=64)
+    slug  = models.SlugField(verbose_name="slug", max_length=128, blank=True, null=True)
 
     class Meta:
         ordering = (
